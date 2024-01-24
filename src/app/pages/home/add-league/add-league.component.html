@@ -1,1 +1,63 @@
-<p>add-league works!</p>
+<div class="row">
+  <div class="col">
+
+    <div class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h5 class="modal-title">Add a new League:</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+
+          <!-- ------ -  FORMLEAGUE  - ------- -->
+
+            <form [formGroup]="leagueForm">
+
+              <!---------- name ------------>
+              <div>
+                <input class=""  type="name" class="form-control" placeholder="Add league name" formControlName="name" required
+                [ngClass]="{'is-invalid': leagueForm.get('name')?.invalid && leagueForm.get('name')?.touched}">
+              </div>
+
+              <!--------- sport ------------->
+              <div>
+                <select class=""  name="" id="sportSelect" formControlName="sport" required
+                [ngClass]="{'is-invalid': leagueForm.get('sport')?.invalid && leagueForm.get('sport')?.touched}"></select>
+              </div>
+
+              <!---------- category ------------>
+              <div>
+                <select class=""  name="" id="CategorySelect" formControlName="category" required
+                [ngClass]="{'is-invalid': leagueForm.get('category')?.invalid && leagueForm.get('category')?.touched}"></select>
+              </div>
+
+              <!---------- location ---------------->
+              <div>
+                <input class=""  type="name" class="form-control" placeholder="Add league name" formControlName="location" required
+                [ngClass]="{'is-invalid': leagueForm.get('location')?.invalid && leagueForm.get('location')?.touched}">
+              </div>
+
+              <!----------- buttons ---------------->
+              <div>
+                <button></button>
+                <button></button>
+              </div>
+
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
