@@ -10,7 +10,7 @@ import { EditLeagueComponent } from './edit-league/edit-league.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule,],
+  imports: [CommonModule, ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -29,7 +29,7 @@ export class HomeComponent {
     )
   }
 
-  deleteLeague(id: number): void{
+ /*  deleteLeague(id: number): void{
     this.leagueService.deleteLeagues(id).subscribe(
       {
         next: (res) => {
@@ -39,7 +39,7 @@ export class HomeComponent {
         error: (err) => console.log(err)
       }
     )
-  }
+  } */
 
   //Per obrir el modal:
 

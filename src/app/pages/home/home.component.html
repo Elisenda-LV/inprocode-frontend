@@ -5,31 +5,32 @@
       <h5 class="">Manage your Leagues</h5>
     </div>
     <div class="col-6 text-end">
-      <button class="btn btn-primary">Add League</button>
+      <button class="btn btn-primary" (click)="createLeague()">Add League</button>
     </div>
 
   </div>
 
   <div class="row pt-5">
-    <div class="col">
 
-      <div class="card bg-body-tertiary pt-4 w-25">
+    @for(league of leagues ; track $index){
+
+    <div class="col">
+      <div class="card bg-body-tertiary pt-4">
         <div class="card-body pb-5">
-          <h5 class="card-title fw-bold border-bottom pb-3">name</h5>
+          <h5 class="card-title fw-bold border-bottom pb-3">{{ league.name }}</h5>
           <ul class="pb-5 pt-4">
-            <li class="">Sport:  </li>
-            <li class="">Gender: </li>
+            <li class="">Sport: {{ league.sport }} </li>
+            <li class="">Gender: {{ league.category }} </li>
             <li class="">Location: </li>
           </ul>
         <!--<button class="btn btn-primary me-3">Add Team</button>
           <button class="btn btn-primary me-3">Show Teams</button> -->
-          <button class="btn btn-primary me-3">Edit</button>
+          <button class="btn btn-primary me-3" (click)="editLeague()">Edit</button>
           <button class="btn btn-secondary">Delete</button>
         </div>
       </div>
-
-
     </div>
 
+    }
   </div>
 </div>
