@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject, Input } from '@angular/core';
-import { ReactiveFormsModule, FormsModule, FormGroup, FormControl } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { League } from '../../../interfaces/league.interface';
 import { LeagueService } from '../../../services/league.service';
@@ -26,10 +26,10 @@ export class EditLeagueComponent implements OnInit {
 
   constructor( public leagueService: LeagueService ){
     this.leagueForm = new FormGroup({
-      name: new FormControl (''),
-      sport: new FormControl (''),
-      category: new FormControl (''),
-      location: new FormControl (''),
+      name: new FormControl ('', [Validators.required, Validators.maxLength(15)]),
+      sport: new FormControl ('', [Validators.required]),
+      category: new FormControl ('', [Validators.required]),
+      location: new FormControl ('', [Validators.required, Validators.maxLength(15)]),
     })
 
   }
@@ -53,7 +53,7 @@ export class EditLeagueComponent implements OnInit {
         name: formValues.name,
         sport: formValues.sport,
         category: formValues.category,
-
+        location: formValues.location,
       }
 
       this.leagueService.updateLeague(editLeagues).subscribe(
@@ -65,6 +65,12 @@ export class EditLeagueComponent implements OnInit {
         }
       );
     }
+  }
+
+   //Tancar modal:
+
+   closeEdit(){
+    this.activeModal.close(this.editLeague)
   }
 
 

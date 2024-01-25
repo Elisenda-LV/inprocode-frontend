@@ -17,9 +17,9 @@ export class LeagueService {
     return this.http.get<League[]>(`${API_URL}leagues`)
   }
 
-/*   deleteLeagues(id: number): Observable<any>{
+  deleteLeagues(id: number): Observable<any>{
     return this.http.delete<League[]>(`${API_URL}leagues/${id}`);
-  } */
+  }
 
   addLeague(body: League): Observable<any>{
     return this.http.post<League>(`${API_URL}leagues`, body)

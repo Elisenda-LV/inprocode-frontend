@@ -1,6 +1,6 @@
 import { Component, Input, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { League } from '../../../interfaces/league.interface';
 import { LeagueService } from '../../../services/league.service';
@@ -23,10 +23,10 @@ export class AddLeagueComponent  {
   @Input() league: League[] = [];
 
   leagueForm = new FormGroup({
-    name: new FormControl (''),
-    sport: new FormControl (''),
-    category: new FormControl (''),
-    location: new FormControl ('')
+    name: new FormControl ('', [Validators.required, Validators.maxLength(15)]),
+    sport: new FormControl ('', [Validators.required]),
+    category: new FormControl ('', [Validators.required]),
+    location: new FormControl ('', [Validators.required, Validators.maxLength(15)])
 
   });
 
@@ -41,18 +41,29 @@ export class AddLeagueComponent  {
         name: formValues.name!,
         sport: formValues.sport!,
         category: formValues.category!,
+        location: formValues.location!,
 
       }
 
       this.leagueService.addLeague(newLeague).subscribe(
         {
           next: (createdLeague: any) => {
-            this.activeModal.close(createdLeague)
+            this.activeModal.close(createdLeague);
+
           },
           error: (err) => console.log(err)
         }
       )
     }
   }
+
+   //Tancar modal:
+
+   closeLeague(){
+    this.activeModal.close(this.createLeague)
+  }
+
+
+
 
 }

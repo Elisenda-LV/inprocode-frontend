@@ -29,7 +29,7 @@ export class HomeComponent {
     )
   }
 
- /*  deleteLeague(id: number): void{
+  deleteLeague(id: number): void{
     this.leagueService.deleteLeagues(id).subscribe(
       {
         next: (res) => {
@@ -39,7 +39,7 @@ export class HomeComponent {
         error: (err) => console.log(err)
       }
     )
-  } */
+  }
 
   //Per obrir el modal:
 
@@ -51,6 +51,8 @@ export class HomeComponent {
   editLeague(){
     this.modalService.open(EditLeagueComponent);
   }
+
+
 
 
 

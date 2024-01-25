@@ -5,5 +5,6 @@ export interface League {
   name: string,
   sport: string,
   category: string,
+  location: string,
 
 }

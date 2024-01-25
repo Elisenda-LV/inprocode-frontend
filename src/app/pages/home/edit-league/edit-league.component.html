@@ -1,40 +1,54 @@
 <div class="row">
   <div class="col">
     <div class="card p-5">
-        <h5 class="card-title">Edit your League:</h5>
+        <h5 class="card-title">Create a new League</h5>
 
       <!-- ------ -  FORMLEAGUE  - ------- -->
 
         <form [formGroup]="leagueForm" (submit)="editLeague()">
 
           <!---------- name ------------>
-          <div>
-            <input class=""  type="name" class="form-control" placeholder="Add league name" formControlName="name" required
+          <div class="mt-4 p-2">
+            <span class="text-secondary">Name:</span>
+            <input class="form-control"  type="name" class="form-control" formControlName="name" required
             [ngClass]="{'is-invalid': leagueForm.get('name')?.invalid && leagueForm.get('name')?.touched}">
           </div>
 
           <!--------- sport ------------->
-          <div>
-            <select class="btn btn-light"  name="" id="sportSelect" formControlName="sport" required
-            [ngClass]="{'is-invalid': leagueForm.get('sport')?.invalid && leagueForm.get('sport')?.touched}"></select>
+          <div class="p-2">
+            <span class="text-secondary">Sport:</span>
+            <select class="form-select"  name="" id="sportSelect" formControlName="sport" required
+            [ngClass]="{'is-invalid': leagueForm.get('sport')?.invalid && leagueForm.get('sport')?.touched}">
+              <option value="F7">F5</option>
+              <option value="F11">F7</option>
+              <option value="F5">F11</option>
+              <option value="Basket">Basket</option>
+              <option value="Padel">Padel</option>
+            </select>
           </div>
 
           <!---------- category ------------>
-          <div>
-            <select class="btn btn-outline-secondary" name="" id="CategorySelect" formControlName="category" required
-            [ngClass]="{'is-invalid': leagueForm.get('category')?.invalid && leagueForm.get('category')?.touched}"></select>
+          <div class="p-2">
+            <span class="text-secondary">Category:</span>
+            <select class="form-select" name="" id="CategorySelect" formControlName="category" required
+            [ngClass]="{'is-invalid': leagueForm.get('category')?.invalid && leagueForm.get('category')?.touched}">
+            <option value="Women">Women</option>
+            <option value="Men">Men</option>
+            <option value="Mixed">Mixed</option>
+            </select>
           </div>
 
           <!---------- location ---------------->
-          <div>
-            <input class=""  type="name" class="form-control" placeholder="Location" formControlName="location" required
+          <div class="p-2">
+            <span class="text-secondary">Location:</span>
+            <input class="form-control"  type="name" class="form-control" formControlName="location" required
             [ngClass]="{'is-invalid': leagueForm.get('location')?.invalid && leagueForm.get('location')?.touched}">
           </div>
 
           <!----------- buttons ---------------->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+          <div class="modal-footer border-white mt-4">
+            <button type="button" class="btn btn-secondary" (click)="closeEdit()" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" >Add League</button>
           </div>
 
         </form>
