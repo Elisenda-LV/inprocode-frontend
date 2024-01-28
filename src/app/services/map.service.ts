@@ -13,8 +13,14 @@ export class MapService {
 
   constructor(private httpClient: HttpClient) { }
 
+  //Show all markers:
   getMarkers():Observable <Map[]>{
     return this.httpClient.get<Map[]>(`${API_URL}maps`)
+  }
+
+  //Show stadium category:
+  getStadiumCategory(category: string): Observable<any[]>{
+    return this.httpClient.get<any[]>(`${API_URL}maps?category=${category}`);
   }
 
 
