@@ -64,8 +64,8 @@ export class EditEventComponent implements OnInit {
     }
   }
 
-/*   deleteEvent(id: number): void {
-    this.calendarService.deleteEvent(id).subscribe(
+deleteEvent(): void {
+   /*  this.calendarService.deleteEvent(id).subscribe(
       {
         next: (res) => {
           this.calendars = this.calendars.filter(calendar => calendar.id !== id );
@@ -73,8 +73,8 @@ export class EditEventComponent implements OnInit {
         },
           error: (err) => console.log(err)
         }
-      )
-  } */
+      ) */
+  }
 
 
   closeEdit(){

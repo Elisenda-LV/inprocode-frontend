@@ -22,8 +22,6 @@ import { CommonModule } from '@angular/common';
 
 export class CalendarComponent implements OnInit {
 
-
-
   public modalService = inject(NgbModal);
 
   calendarOptions: CalendarOptions = {
@@ -35,8 +33,6 @@ export class CalendarComponent implements OnInit {
       this.updateMatch(info);
     }
   }
-
-
 
   constructor(public calendarService: CalendarService, public config: NgbModalConfig){}
 
