@@ -53,7 +53,8 @@ export class GraphicsComponent implements OnInit {
         datasets: [{
           label: 'Goals',
           data: this.goalsData.map(goal => goal.goals),
-          //backgroundColor: this.goalsData.map(goal => goal.colorcode),
+          backgroundColor: "rgba(127, 255, 212, 0.701)",
+          borderColor:'#671cde',
           borderWidth: 1
         }]
       },
@@ -77,12 +78,12 @@ export class GraphicsComponent implements OnInit {
         datasets: [{
           label: 'Goals',
           data: this.goalsData.map(goal => goal.goals),
-          //borderColor: this.goalsData.map(sale => sale.colorcode),
+          borderColor:'#671cde',
           backgroundColor: 'transparent',
           borderWidth: 2,
-          //pointBackgroundColor: this.goalsData.map(goal => goal.colorcode),
-          //pointBorderColor: this.salesData.map(sale => sale.colorcode),
-          //pointHoverBackgroundColor: this.salesData.map(sale => sale.colorcode),
+          pointBackgroundColor: '#671cde',
+          pointBorderColor: '#671cde',
+          pointHoverBackgroundColor: '#671cde',
           pointHoverBorderColor: '#fff',
           pointRadius: 4,
           pointHoverRadius: 6,

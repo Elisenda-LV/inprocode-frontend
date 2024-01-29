@@ -1,11 +1,11 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, NgModuleRef, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Calendar } from '@fullcalendar/core';
+
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarService } from '../../../services/calendar.service';
 import { CommonModule } from '@angular/common';
-
-
+import { MyCalendar } from '../../../interfaces/calendar.interface';
+import { EventClickArg, EventInput } from '@fullcalendar/core';
 
 @Component({
   selector: 'app-edit-event',
@@ -18,10 +18,13 @@ import { CommonModule } from '@angular/common';
 
 export class EditEventComponent implements OnInit {
 
+  @Input() eventInfo!: EventClickArg;
 
   activeModal = inject(NgbActiveModal);
 
-  @Input() calendars: Calendar [] = [];
+  public event: MyCalendar[] = [];
+  public formChanged: boolean = false;
+
 
   calendarForm: FormGroup;
 
@@ -35,47 +38,41 @@ export class EditEventComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.resetForm()
+    this.resetForm();
+    if (this.eventInfo) {
+      console.log(this.eventInfo.event.id); // Ejemplo de acceso seguro
+    }
   }
 
   resetForm(){
-    this.calendarForm.reset(this.calendars)
+    this.calendarForm.reset(this.event);
+
   }
 
   editEvent(){
     if(this.calendarForm.valid){
       const formValues = this.calendarForm.value;
-      const newEvent: any = {
-        title: formValues.title,
-        start: formValues.start,
-        location: formValues.location,
+      const editedEvent: MyCalendar = {
+        id: Number(this.eventInfo.event.id) ,
+        title: formValues.title!,
+        start:  formValues.start!,
+        location: formValues.location!,
 
       }
 
-      this.calendarService.updateEvent(newEvent).subscribe(
+      console.log(editedEvent),
+
+      this.calendarService.updateEvent(editedEvent).subscribe(
         {
-          next: (updatedEvent: any) => {
-            this.activeModal.close(updatedEvent);
-            console.log(updatedEvent)
+          next: (editedEvent: any) => {
+            this.activeModal.close(editedEvent);
+            console.log(editedEvent)
           },
           error: (err) => console.log(err)
         }
       )
     }
   }
-
-deleteEvent(): void {
-   /*  this.calendarService.deleteEvent(id).subscribe(
-      {
-        next: (res) => {
-          this.calendars = this.calendars.filter(calendar => calendar.id !== id );
-          console.log(res)
-        },
-          error: (err) => console.log(err)
-        }
-      ) */
-  }
-
 
   closeEdit(){
     this.activeModal.close(this.editEvent)

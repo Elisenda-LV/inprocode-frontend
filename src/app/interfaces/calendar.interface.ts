@@ -1,6 +1,6 @@
-export interface Calendar{
+export interface MyCalendar{
 
-  id: string,
+  id?: number,
   title: string,
   start: string,
   location: string,
