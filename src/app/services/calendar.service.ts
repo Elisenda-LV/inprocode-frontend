@@ -13,8 +13,26 @@ export class CalendarService {
   constructor(private httpClient: HttpClient) { }
 
 
-  getListMatches():Observable<Calendar[]>{
+  getListEvents():Observable<Calendar[]>{
     return this.httpClient.get<Calendar[]>(`${API_URL}calendars`)
+  }
+
+  getEvent(id:number):Observable<Calendar[]>{
+    return this.httpClient.get<Calendar[]>(`${API_URL}calendars/${id}`)
+  }
+
+  deleteEvent(id:number):Observable<any[]>{
+    return this.httpClient.delete<Calendar[]>(`${API_URL}calendars/${id}`)
+  }
+
+  postEvent(body: Calendar):Observable<any>{
+    return this.httpClient.post<Calendar>(`${API_URL}calendars`, body)
+  }
+
+  updateEvent(body: Calendar):Observable<any>{
+    const id = body.id;
+    console.log(body);
+    return this.httpClient.patch<Calendar>(`${API_URL}calendars/${id}`, body);
   }
 
 

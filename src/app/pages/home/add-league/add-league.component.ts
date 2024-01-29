@@ -2,6 +2,7 @@ import { Component, Input, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { League } from '../../../interfaces/league.interface';
 import { LeagueService } from '../../../services/league.service';
 
